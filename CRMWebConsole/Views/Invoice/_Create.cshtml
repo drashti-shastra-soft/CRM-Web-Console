@@ -1,0 +1,144 @@
+﻿@model CRMWebConsole.Domain.Invoice
+
+<div class="modal fade" id="modal-invoice" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if (Model.Id > 0)
+                {
+                    <h5 class="modal-title fs-5" id="invoiceModalLabel">Edit Invoice</h5>
+                }
+                else
+                {
+                    <h5 class="modal-title fs-5" id="invoiceModalLabel">Add Invoice</h5>
+                }
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Dyeing Supervisor <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.DyeingSupervisorId, ViewBag.DyeingSupervisors as List<SelectListItem>, "Select Dyeing Supervisor", new { @class = "form-control" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Collection Agent <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.CollectionAgentId, ViewBag.CollectionAgents as List<SelectListItem>, "Select Collection Agent", new { @class = "form-control" })
+                        <span class="text-danger"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Broker</label>
+                        @Html.DropDownListFor(m => m.BrokerId, ViewBag.Broker as List<SelectListItem>, "Select Broker", new { @class = "form-control" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Invoice Type <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.ClientTypeId, ViewBag.InvoiceTypes as List<SelectListItem>, "Select Invoice Type", new { @class = "form-control" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Name <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter Name" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Brand <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.Brand, new { @class = "form-control", placeholder = "Enter Brand" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>Contact Person <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", placeholder = "Enter Contact Person" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Mobile Number <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control", placeholder = "Enter Mobile Number" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Email Address <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", placeholder = "Enter Email Address" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>PAN Number <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.PANNumber, new { @class = "form-control", placeholder = "Enter PAN Number" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Aadhar Number <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.AadharNumber, new { @class = "form-control", placeholder = "Enter Aadhar Number" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>TAN Number <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.TANNumber, new { @class = "form-control", placeholder = "Enter TAN Number" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>GST Number <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.GSTNumber, new { @class = "form-control", placeholder = "Enter GST Number" })
+                        <span class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Payment Terms <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.PaymentTerms, ViewBag.PaymentTerms as List<SelectListItem>, "Select Payment Terms", new { @class = "form-control" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Credit Limit <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.CreditLimit, new { @class = "form-control", placeholder = "Enter Credit Limit" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-check">
+                            @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-check-input" })
+                            <label class="form-check-label" for="isActiveCheck">Is Active?</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="javascript:void(0);" class="btn btn-primary btn-submit">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/custom-js/invoice/create.js")"></script>
+
+@Html.Hidden("NotificationType", (object)ViewBag.NotificationType)
+@Html.Hidden("NotificationMsg", (object)ViewBag.NotificationMsg)

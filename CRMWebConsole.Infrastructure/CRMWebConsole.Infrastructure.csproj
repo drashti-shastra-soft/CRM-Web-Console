@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA0734D5-A347-40D5-B287-CB1DC1711EC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRMWebConsole.Infrastructure</RootNamespace>
+    <AssemblyName>CRMWebConsole.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIResponseException.cs" />
+    <Compile Include="BadRequestException.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Helper\AuditHelper.cs" />
+    <Compile Include="Helper\EnumsHelper.cs" />
+    <Compile Include="HttpAuthenticationProvider.cs" />
+    <Compile Include="HttpClientProvider.cs" />
+    <Compile Include="HttpContextHelper.cs" />
+    <Compile Include="IReceiptAllocationService.cs" />
+    <Compile Include="IService\IAddressService.cs" />
+    <Compile Include="IService\IAuthenticationService.cs" />
+    <Compile Include="IService\IBankService.cs" />
+    <Compile Include="IService\IBrokerService.cs" />
+    <Compile Include="IService\IChangePasswordService.cs" />
+    <Compile Include="IService\ICityService.cs" />
+    <Compile Include="IService\IClientService.cs" />
+    <Compile Include="IService\ICSVReaderService.cs" />
+    <Compile Include="IService\IDropdownService.cs" />
+    <Compile Include="IService\IFileReaderService.cs" />
+    <Compile Include="IService\IForgotPasswordService.cs" />
+    <Compile Include="IService\IHttpClientService.cs" />
+    <Compile Include="IService\IInvoiceLineItemService.cs" />
+    <Compile Include="IService\IInvoiceService.cs" />
+    <Compile Include="IService\IItemService.cs" />
+    <Compile Include="IService\IMarketService.cs" />
+    <Compile Include="IService\IOutstandingService.cs" />
+    <Compile Include="IService\IPhoneNumberService.cs" />
+    <Compile Include="IService\IReceiptService.cs" />
+    <Compile Include="IService\ISalesReceiptService.cs" />
+    <Compile Include="IService\IStateService.cs" />
+    <Compile Include="IService\ISalesReportService.cs" />
+    <Compile Include="IService\IUserService.cs" />
+    <Compile Include="IService\IUserTypeService.cs" />
+    <Compile Include="IService\IValidationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRMWebConsole.Domain\CRMWebConsole.Domain.csproj">
+      <Project>{6a88774a-0e43-4c4a-b862-891ffb9f5ad9}</Project>
+      <Name>CRMWebConsole.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

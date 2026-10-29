@@ -1,0 +1,61 @@
+﻿
+.LoginFormSection .input-group {
+    display: block;
+}
+
+    .LoginFormSection .input-group .form-control {
+        width: 100%;
+    }
+
+.login-box img {
+    height: 100px;
+}
+
+.LoginFormSection .input-group-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    height: 38px;
+    width: 40px;
+}
+
+.hide {
+    display: none;
+}
+
+
+    .externalBody .login-logo {
+        position: absolute;
+        top: -55px;
+        left: 50%;
+        z-index: 9;
+        transform: translateX(-50%);
+        width: 130px;
+        background: #ffffff;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+
+    .externalBody .login-box {
+        position: relative;
+    }
+.highlight {
+    background-color: #ffeeba;
+    transition: background-color 0.5s ease;
+}
+
+.disabled-link {
+    pointer-events: none;
+    text-decoration: none;
+    cursor: not-allowed;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    box-shadow: none;
+}

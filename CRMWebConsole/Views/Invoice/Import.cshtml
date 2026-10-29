@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Invoice";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")">Home</a></li>
+                        <li class="breadcrumb-item active">Invoice</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="@Url.Content("~/Uploads/Sample/Invoice.csv")" class="btn btn-info"><i class="fa fa-download"></i> Download Template Sheet</a>
+                            </div>
+                            <div class="col-4">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="importFile">
+                                    <label class="custom-file-label" for="importFile">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a id="btn-upload" href="javascript:void(0)" class="btn btn-default"><i class="fa fa-upload"></i> Start Upload</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="tblImportInvoice" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Book Type
+                            </th>
+                            <th>
+                                Client Name
+                            </th>
+                            <th>
+                                Invoice Number
+                            </th>
+                            <th>
+                                Challan Number
+                            </th>
+                            <th>
+                                LR Number
+                            </th>
+                            <th>
+                                Vehicle Number
+                            </th>
+                            <th>
+                                Dyeing Supervisor
+                            </th>
+                            <th>
+                                Collection Agent
+                            </th>
+                            <th>
+                                Broker
+                            </th>
+                            <th>
+                                Taxable Value
+                            </th>
+                            <th>
+                                SGST
+                            </th>
+                            <th>
+                                CGST
+                            </th>
+                            <th>
+                                IGST
+                            </th>
+                            <th>
+                                Net Amount
+                            </th>
+                            <th hidden>
+                                ClientId
+                            </th>
+                            <th hidden>
+                                DyeingSupervisorId
+                            </th>
+                            <th hidden>
+                                CollectionAgentId
+                            </th>
+                            <th hidden>
+                                BrokerId
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center text-danger" colspan="21">
+                                There is currently no content to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="@Url.Content("~/custom-js/invoice/import.js")"></script>
+
+

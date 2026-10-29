@@ -1,0 +1,47 @@
+﻿@model CRMWebConsole.Domain.PhoneNumber
+
+<div class="modal fade" id="modal-phone" tabindex="-1" aria-labelledby="PhoneModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                @(Model.Id > 0 ? "Edit Phone Number" : "Add Phone Number")
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.ClientId)
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Phone Number 1 <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.PhoneNumber1, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Phone Number 2</label>
+                        @Html.TextBoxFor(m => m.PhoneNumber2, new { @class = "form-control", placeholder = "Enter Phone Number 2" })
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label>Phone Number 3</label>
+                        @Html.TextBoxFor(m => m.PhoneNumber3, new { @class = "form-control", placeholder = "Enter Phone Number 3" })
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="javascript:void(0);" class="btn btn-primary" data-form="frmSavePhoneNumber">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/custom-js/client/upsert-phonenumber.js")"></script>
+
+@Html.Hidden("NotificationType", (object)ViewBag.NotificationType)
+@Html.Hidden("NotificationMsg", (object)ViewBag.NotificationMsg)
+

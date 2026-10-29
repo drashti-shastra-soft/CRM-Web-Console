@@ -1,0 +1,170 @@
+﻿@model CRMWebConsole.Domain.Receipt
+
+<div class="modal fade" id="modal-receipt" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if (Model.Id > 0)
+                {
+                    <h5 class="modal-title fs-5" id="receiptModalLabel">Edit Receipt</h5>
+                }
+                else
+                {
+                    <h5 class="modal-title fs-5" id="receiptModalLabel">Add Receipt</h5>
+                }
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        @Html.HiddenFor(m => m.Id)
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Collection Agent <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.CollectionAgentId, ViewBag.CollectionAgents as List<SelectListItem>, "Select Collection Agent", new { @class = "form-control" })
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Client <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.ClientId, ViewBag.Clients as List<SelectListItem>, "Select Client", new { @class = "form-control" })
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Voucher Date <span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.VoucherDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label>Voucher Number <span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.VoucherNumber, new { @class = "form-control", placeholder = "Enter Voucher Number", onkeypress = "return event.charCode >= 48 && event.charCode <= 57", type = "text" })
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Method <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.Method, ViewBag.Methods as List<SelectListItem>, "Select Method", new { @class = "form-control" })
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="col">
+                                <label>Bank <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.BankId, ViewBag.Banks as List<SelectListItem>, "Select Bank", new { @class = "form-control" })
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <label>Reference Number</label>
+                                @Html.TextBoxFor(m => m.ReferenceNumber, new { @class = "form-control", placeholder = "Enter Reference Number" })
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label>Cheque Date </label>
+                                @Html.TextBoxFor(m => m.ChequeDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                                <span class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <hr />
+                        <table class="table table-bordered" id="tblInvoices">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Invoice Number
+                                    </th>
+                                    <th>
+                                        Net Amount
+                                    </th>
+                                    <th>
+                                        Amount Due
+                                    </th>
+                                    <th>
+                                        Payment Days
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="text-right">
+                                        <span id="spnTotalAmount"></span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        @*<span id="spnValidationMsg" class="text-left text-danger"></span>*@
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <label class="me-3 mb-0" style="width:150px;">Total Payment</label>
+                            @Html.TextBoxFor(m => m.TotalPayment, new { @id = "TotalPayment", @class = "form-control", placeholder = "Total Payment" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="Cash Discount" class="me-3 mb-0" style="width:150px;">Cash Discount</label>
+                            @Html.TextBoxFor(m => m.CashDiscount, new { @id = "CashDiscount", @class = "form-control", placeholder = "Cash Discount" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="TDS" class="me-3 mb-0" style="width:150px;">TDS</label>
+                            @Html.TextBoxFor(m => m.TDS, new { @id = "TDS", @class = "form-control", placeholder = "TDS" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="Rate Difference" class="me-3 mb-0" style="width:150px;">Rate Difference</label>
+                            @Html.TextBoxFor(m => m.RateDifference, new { @id = "RateDifference", @class = "form-control", placeholder = "Rate Difference" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <label class="me-3 mb-0" style="width:150px;">Claim Amount</label>
+                            @Html.TextBoxFor(m => m.ClaimAmount, new { @id = "ClaimAmount", @class = "form-control", placeholder = "Claim Amount" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <label class="me-3 mb-0" style="width:150px;">Final Amount</label>
+                            @Html.TextBoxFor(m => m.FinalAmount, new { @id = "FinalAmount", @class = "form-control", placeholder = "Final Amount" })
+                            <span class="text-danger"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="javascript:void(0);" class="btn btn-primary btn-submit">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/custom-js/receipt/create.js")"></script>
+
+@Html.Hidden("NotificationType", (object)ViewBag.NotificationType)
+@Html.Hidden("NotificationMsg", (object)ViewBag.NotificationMsg)

@@ -1,0 +1,5 @@
+Date,Book Type,Client Name,Invoice Number,Challan Number,LR Number,Vehicle Number,Dyeing Supervisor,Collection Agent,Broker,Item Name,Style,Lot Number,Grey Meter,Piece,Part Piece,Grey Value,Finish Meter,Shortage,Rate,Amount,Add To Total,Subtract From Total,Taxable Value,SGST,CGST,IGST,Net Amount
+13-10-2025,JOB BILLING (GST) UNIT1,John Doe,F004854,,,GJ05AT3047,Deep Pandya,Sahil Gondaliya,,CLASSIC,DYED,6569,1594,15,0,39850,1200,20.33,9,11430,,,34317,,,1715.85,36033
+13-10-2025,JOB BILLING (GST) UNIT1,John Doe,F004855,,,GJ05AT3047,Deep Pandya,Sahil Gondaliya,,CLASSIC,DYED,6567,1600,16,2,39000,1300,21.25,9,12000,,,34317,,,1715.85,36033
+13-10-2025,JOB BILLING (GST) UNIT1,John Doe,F004856,,,GJ05AT3047,Deep Pandya,Sahil Gondaliya,,CLASSIC,DYED,6580,1700,17,3,39800,1400,22.53,9,13000,,,34317,,,1715.85,36033
+13-10-2025,JOB BILLING (GST) UNIT1,John Doe,F004857,,,GJ05AT3047,Deep Pandya,Sahil Gondaliya,,CLASSIC,DYED,6581,1800,18,4,40000,1500,28.59,9,14000,,,34317,,,1715.85,36033
